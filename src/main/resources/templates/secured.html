@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>🔐 Private Page [Spring Sec: The Good Parts]</title>
+  <title>A Secured Page</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-<h1><em>Secured Aea!</em></h1>
-<p>Hello, [<th:block th:text="${name}" />]!</p>
+<h1><em>Secured Area!</em></h1>
+<p>Hello, <th:block th:text="${name}" /> !</p>
 <p>You are allowed to access this private page.</p>
 
 <form method="post" action="/logout" th:if="${_csrf != null}">

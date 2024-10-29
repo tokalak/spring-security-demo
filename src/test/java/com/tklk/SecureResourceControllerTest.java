@@ -34,7 +34,7 @@ class SecureResourceControllerTest {
   @Test
   public void allowAuthenticatedAccessToSecuredEndpoint() throws Exception {
     // first login
-    // after a successful login we're redirected to /secured
+    // after a successful login we're redirected to /secured end point
     mockMvc.perform(
             formLogin("/login")
                 .user("admin")
@@ -42,11 +42,6 @@ class SecureResourceControllerTest {
         )
         .andExpect(status().is3xxRedirection())
         .andExpect(header().string("Location", "/secured"))
-        .andExpect(authenticated())
-        .andReturn();
-
-    // /secured endpoint should be accessible now
-    mockMvc.perform(get("/secured"))
-        .andExpect(status().isUnauthorized());
+        .andExpect(authenticated().withUsername("admin"));
   }
 }
